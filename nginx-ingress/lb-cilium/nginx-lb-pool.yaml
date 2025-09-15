@@ -7,7 +7,4 @@ spec:
     - cidr: "188.68.62.169/32"
   serviceSelector:
     matchLabels:
-      app.kubernetes.io/name: ingress-nginx
-      app.kubernetes.io/instance: nginx-ingress
-      app.kubernetes.io/component: controller
       ip-source: nginx-ingress-lb-pool
