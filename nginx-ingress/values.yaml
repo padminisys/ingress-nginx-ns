@@ -14,6 +14,8 @@ controller:
     externalTrafficPolicy: Local
     annotations:
       lbipam.cilium.io/ips: "188.68.62.169"
+    labels:
+      ip-source: nginx-ingress-lb-pool
 
   # >>> NEW: nginx config for real client IPs safely (no proxy in front) <<<
   config:
