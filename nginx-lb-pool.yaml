@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/graitcloud/apps.git
+    repoURL: https://github.com/padminisys/ingress-nginx-ns.git
     targetRevision: HEAD
     path: nginx-ingress/lb-cilium
   destination:

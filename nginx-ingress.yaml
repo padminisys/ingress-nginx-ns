@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $values-repo/nginx-ingress/values.yaml
-    - repoURL: https://github.com/graitcloud/apps.git
+    - repoURL: https://github.com/padminisys/ingress-nginx-ns.git
       targetRevision: HEAD
       ref: values-repo
   destination:
