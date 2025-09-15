@@ -11,7 +11,7 @@ spec:
     path: nginx-ingress/lb-cilium
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: ingress-nginx
+    namespace: satish-kaushik-t45d6
   syncPolicy:
     automated:
       prune: true
