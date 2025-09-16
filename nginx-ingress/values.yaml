@@ -2,6 +2,7 @@ controller:
   kind: Deployment
   hostNetwork: false
   dnsPolicy: ClusterFirst
+  ingressClass: nginx-satish
 
   # Keep SSL passthrough if you need backends to terminate TLS themselves
   extraArgs:
