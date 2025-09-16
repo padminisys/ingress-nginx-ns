@@ -21,11 +21,11 @@ jobs:
           version: 'v1.33.2'
       - name: Apply Nginx LB pool Argo CD Application
         run: |
-          kubectl apply -f nginx-lb-pool.yaml
+          kubectl delete -f nginx-lb-pool.yaml
         env:
           KUBECONFIG: ./kubeconfig.yaml
       - name: Apply Nginx Ingress Controller Argo CD Application
         run: |
-          kubectl apply -f nginx-ingress.yaml
+          kubectl delete -f nginx-ingress.yaml
         env:
           KUBECONFIG: ./kubeconfig.yaml
