@@ -1,29 +1,26 @@
-# A unique name for all resources created by this Helm release
 fullnameOverride: "satish"
-
 controller:
-  # This is the most important part for a namespace-level controller
   scope:
     enabled: true
-
   kind: Deployment
+  replicaCount: 1
   hostNetwork: false
   dnsPolicy: ClusterFirst
-
-  # Creates a unique IngressClass so you can target this controller
+  watchIngressWithoutClass: false
+  
+  ingressClass: nginx-satish
+  
   ingressClassResource:
     name: nginx-satish
     enabled: true
-    default: false # Correct, the central controller is likely the default
+    default: false
 
-  # For backward compatibility with annotations
-  ingressClass: nginx-satish
-
-  # Correctly disabled to avoid conflicts with a central controller
   admissionWebhooks:
     enabled: false
 
-  # Configures the NGINX controller itself
+  publishService:
+    enabled: true
+
   config:
     use-proxy-protocol: "false"
     use-forwarded-headers: "true"
@@ -31,23 +28,18 @@ controller:
     real-ip-header: "X-Forwarded-For"
     proxy-real-ip-cidr: "127.0.0.1/32"
 
-  # Optional: Keep SSL passthrough if you need backends to terminate TLS
   extraArgs:
     enable-ssl-passthrough: ""
 
-  # Service configuration to expose the controller
   service:
     enabled: true
     type: LoadBalancer
-    externalTrafficPolicy: Local # Good for preserving client source IP
+    externalTrafficPolicy: Local
     annotations:
-      # This annotation requests a specific IP from Cilium's IPAM
       lbipam.cilium.io/ips: "188.68.62.169"
     labels:
-      # This label matches the serviceSelector in your CiliumLoadBalancerIPPool
       ip-source: nginx-ingress-lb-pool
 
-  # Resource requests and limits for the controller pod
   resources:
     limits:
       cpu: 200m
@@ -55,9 +47,7 @@ controller:
     requests:
       cpu: 100m
       memory: 128Mi
-
-# RBAC configuration
+      
 rbac:
   create: true
-  # Creates namespaced Role and RoleBinding instead of ClusterRole
   scope: true
