@@ -7,6 +7,9 @@ controller:
   hostNetwork: false
   dnsPolicy: ClusterFirst
   watchIngressWithoutClass: false
+
+  labels:
+    padmini.systems/network/permission: allow
   
   ingressClass: nginx-satish
   
