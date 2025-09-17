@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-tenant
+  namespace: satish-kaushik-t45d6
+spec:
+  acme:
+    email: xtermous@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod-tenant-account-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx-satish
