@@ -9,7 +9,7 @@ controller:
   watchIngressWithoutClass: false
 
   labels:
-    padmini.systems/network/permission: allow
+    padmini.systems/network-permission: allow
   
   ingressClass: nginx-satish
   
