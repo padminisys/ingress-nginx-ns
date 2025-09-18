@@ -8,6 +8,9 @@ controller:
   dnsPolicy: ClusterFirst
   watchIngressWithoutClass: false
 
+  nodeSelector:
+    kubernetes.io/hostname: psys-centos-1
+
   labels:
     padmini.systems/network-permission: allow
   
