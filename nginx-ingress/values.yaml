@@ -13,6 +13,7 @@ controller:
 
   labels:
     padmini.systems/network-permission: allow
+    padmini.systems/tenant-resource-type: ingress
   
   ingressClass: nginx-satish
   
