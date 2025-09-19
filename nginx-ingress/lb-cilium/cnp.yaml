@@ -1,0 +1,27 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: ns-ingress-managed-baseline
+  namespace: satish-kaushik-t45d6
+  labels:
+    managed-by: platform
+    component: ingress-nginx
+spec:
+  endpointSelector:
+    matchLabels:
+      padmini.systems/tenant-resource-type: ingress
+  ingress:
+    - fromEntities:
+        - host
+        - remote-node
+      toPorts:
+        - ports:
+            - port: "10254"
+              protocol: TCP
+  egress:
+    - toEntities:
+        - kube-apiserver
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
