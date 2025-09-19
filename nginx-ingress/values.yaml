@@ -7,7 +7,8 @@ controller:
   hostNetwork: false
   dnsPolicy: ClusterFirst
   watchIngressWithoutClass: false
-  healthzBindAddress: "0.0.0.0"
+  extraArgs:
+    healthz-bind-address: "0.0.0.0" 
 
   nodeSelector:
     kubernetes.io/hostname: psys-centos-1
